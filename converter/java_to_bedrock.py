@@ -4,6 +4,8 @@ import shutil
 from converter.zip_utils import extract_zip, create_zip
 from converter.bedrock_utils import create_manifest
 from converter.texture_converter import convert_textures
+from converter.icon_converter import convert_icon
+from converter.java_utils import read_pack_metadata
 
 
 def convert_java_to_bedrock(input_path, output_path):
@@ -48,11 +50,17 @@ def convert_java_to_bedrock(input_path, output_path):
             java_texture_folder,
             textures_folder
         )
-        
-    create_manifest(
+    convert_icon(
+        temp_folder,
         bedrock_folder
+    )    
+    metadata = read_pack_metadata(
+        temp_folder
     )
-    
+    create_manifest(
+        bedrock_folder,
+        metadata
+    )
     create_zip(
         bedrock_folder,
         output_path

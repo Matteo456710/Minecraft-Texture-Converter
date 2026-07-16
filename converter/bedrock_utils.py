@@ -3,13 +3,13 @@ import uuid
 import os
 
 
-def create_manifest(output_folder):
+def create_manifest(output_folder, metadata):
 
     manifest = {
         "format_version": 2,
         "header": {
-            "name": "Converted Texture Pack",
-            "description": "Converted from Java Resource Pack",
+            "name": metadata["name"],
+            "description": metadata["description"],
             "uuid": str(uuid.uuid4()),
             "version": [1, 0, 0],
             "min_engine_version": [1, 16, 0]
