@@ -3,6 +3,7 @@ import shutil
 
 from converter.zip_utils import extract_zip, create_zip
 from converter.bedrock_utils import create_manifest
+from converter.mappings import JAVA_TO_BEDROCK_PATHS
 
 
 def convert_java_to_bedrock(input_path, output_path):
