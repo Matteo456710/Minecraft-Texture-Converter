@@ -10,11 +10,11 @@ def detect_pack_type(filepath):
 
         files = zip_file.namelist()
 
-        # Java Resource Pack erkennt man an pack.mcmeta
+        # Java Resource Pack are known for pack.mcmeta
         if "pack.mcmeta" in files:
             return "Java Resource Pack"
 
-        # Bedrock Packs haben manifest.json
+        # Bedrock Packs have manifest.json
         if "manifest.json" in files:
             return "Bedrock Texture Pack"
 
