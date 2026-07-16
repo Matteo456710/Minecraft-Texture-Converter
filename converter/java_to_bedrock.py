@@ -3,7 +3,7 @@ import shutil
 
 from converter.zip_utils import extract_zip, create_zip
 from converter.bedrock_utils import create_manifest
-from converter.mappings import JAVA_TO_BEDROCK_PATHS
+from converter.texture_converter import convert_textures
 
 
 def convert_java_to_bedrock(input_path, output_path):
@@ -44,11 +44,11 @@ def convert_java_to_bedrock(input_path, output_path):
 
     if os.path.exists(java_texture_folder):
 
-        shutil.copytree(
+        convert_textures(
             java_texture_folder,
-            textures_folder,
-            dirs_exist_ok=True
+            textures_folder
         )
+        
     create_manifest(
         bedrock_folder
     )
