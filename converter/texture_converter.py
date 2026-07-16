@@ -1,7 +1,7 @@
 import os
-import shutil
 
 from converter.mappings import JAVA_TO_BEDROCK_PATHS
+from converter.file_converter import convert_file
 
 
 def convert_textures(java_texture_folder, bedrock_texture_folder):
@@ -29,4 +29,7 @@ def convert_textures(java_texture_folder, bedrock_texture_folder):
             source = os.path.join(root, file)
             destination = os.path.join(destination_folder, file)
 
-            shutil.copy2(source, destination)
+            convert_file(
+                source,
+                destination
+            )
