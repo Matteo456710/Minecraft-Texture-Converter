@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from converter.detect import detect_pack_type
 import os
 
 app = Flask(__name__)
@@ -28,9 +29,11 @@ def upload():
 
         file.save(filepath)
 
-        return "Datei erfolgreich hochgeladen!"
+        pack_type = detect_pack_type(filepath)
 
-    return "Keine Datei ausgewählt"
+        return f"Detected: {pack_type}"
+
+    return "No file selected"
 
 
 if __name__ == "__main__":
