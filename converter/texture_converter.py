@@ -2,6 +2,7 @@ import os
 
 from converter.mappings import JAVA_TO_BEDROCK_PATHS
 from converter.file_converter import convert_file
+from converter.texture_mapping import JAVA_TEXTURE_RENAMES
 
 
 def convert_textures(java_texture_folder, bedrock_texture_folder):
@@ -26,8 +27,21 @@ def convert_textures(java_texture_folder, bedrock_texture_folder):
         os.makedirs(destination_folder, exist_ok=True)
 
         for file in files:
-            source = os.path.join(root, file)
-            destination = os.path.join(destination_folder, file)
+
+            filename = JAVA_TEXTURE_RENAMES.get(
+                file,
+                file
+            )
+
+            source = os.path.join(
+                root,
+                file
+            )
+
+            destination = os.path.join(
+                destination_folder,
+                filename
+            )
 
             convert_file(
                 source,

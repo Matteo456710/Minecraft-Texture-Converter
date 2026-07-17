@@ -6,6 +6,7 @@ from converter.bedrock_utils import create_manifest
 from converter.texture_converter import convert_textures
 from converter.icon_converter import convert_icon
 from converter.java_utils import read_pack_metadata
+from converter.animation_converter import convert_animations
 
 
 def convert_java_to_bedrock(input_path, output_path):
@@ -47,6 +48,10 @@ def convert_java_to_bedrock(input_path, output_path):
     if os.path.exists(java_texture_folder):
 
         convert_textures(
+            java_texture_folder,
+            textures_folder
+        )
+        convert_animations(
             java_texture_folder,
             textures_folder
         )
